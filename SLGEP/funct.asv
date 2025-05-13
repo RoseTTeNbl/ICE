@@ -1,0 +1,12 @@
+function f = funct(x)
+
+[r,c]=size(x);
+ob=zeros(r,1);
+res=zeros(r,10);
+
+for i=1:r
+    res(i)=obj(x(i,:));
+    ob(i)=gpr(res(i,:));
+end
+
+end
