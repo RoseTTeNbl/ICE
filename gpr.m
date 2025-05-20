@@ -26,7 +26,7 @@ if nline(y)==0 || conv==F1 || conv==F2
     f=0;
 else
     f=1-(1-exp(0-2*del))/(1+exp(0-2*del));
-    %sig
+    %optional
 end
 
 

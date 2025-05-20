@@ -35,7 +35,7 @@ function value = decode_recursive(index,c)
                         end
                 end
                 
-            case {6,7,8,9} % 一元操作符
+            case {6,7,8,9} % 
                 y = decode_recursive(index + 1,c);
                 switch c(1, index)
                     case 6
@@ -85,7 +85,7 @@ function value = decode_recursive(index,c)
                 end
                 
             otherwise
-                value = 1; % 对于其他未考虑的情况返回 1
+                value = 1; % 
         end
         end
 end

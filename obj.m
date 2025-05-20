@@ -15,7 +15,7 @@ INFS=1e-5;
 for i=1:GEN
     G=i*d;
 
-    for g=1:G%一次以G为深度的迭代
+    for g=1:G%
 
     for k=1:adf
         sub=chr(1,D+(k-1)*d0+1:D+k*d0);

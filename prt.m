@@ -27,7 +27,7 @@ function expr = decode_adf(index,c)
                 end
             else
             switch c(1, index)
-                case {2,3,4,5} % 二元操作符
+                case {2,3,4,5} % 
                     y1 = decode_adf(index + 1,c);
                     y2 = decode_adf(index + 2,c);
                     switch c(1, index)
@@ -74,7 +74,7 @@ function expr = decode_main(index,c)
                 end
             else
             switch c(1, index)
-                case {2,3,4,5} % 二元操作符
+                case {2,3,4,5} % 
                     y1 = decode_main(index + 1,c);
                     y2 = decode_main(index + 2,c);
                     switch c(1, index)
@@ -91,7 +91,7 @@ function expr = decode_main(index,c)
                                 expr = ['(' y1 ' / ' y2 ')'];
                             end
                     end
-                case {6,7,8,9} % 一元操作符
+                case {6,7,8,9} % 
                     y1 = decode_main(index + 1,c);
                     switch c(1, index)
                         case 6
@@ -128,7 +128,7 @@ function expr = decode_constant(index,c)
                 end
             else
             switch c(1, index)
-                case {2, 3, 4, 5} % 二元操作符
+                case {2, 3, 4, 5} % 
                     y1 = decode_constant(index + 1,c);
                     y2 = decode_constant(index + 2,c);
                     switch c(1, index)
@@ -145,7 +145,7 @@ function expr = decode_constant(index,c)
                                 expr = ['(' y1 ' / ' y2 ')'];
                             end
                     end
-                case {6,7,8, 9, 10} % 一元操作符
+                case {6,7,8, 9, 10} % 
                     y1 = decode_constant(index + 1,c);
                     switch c(1, index)
                         case 6

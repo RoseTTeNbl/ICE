@@ -1,7 +1,7 @@
 function re = decode_exp(chrom, cof, cons, G , g, sy, group)
     % return adf value with i as cons or main iteration value with adf values as cons 
-    c = length(chrom); % 符号串的长度
-    i = G - g + 1; % 设定变量 
+    c = length(chrom); %
+    i = G - g + 1; %  
     cof = [i,cof];
 
     function value = decode_recursive(index) %%ADF part
@@ -15,7 +15,7 @@ function re = decode_exp(chrom, cof, cons, G , g, sy, group)
         else
 
         switch chrom(1, index)
-            case {2, 3, 4, 5} % 二元操作符
+            case {2, 3, 4, 5} % 
                 y1 = decode_recursive(index + 1);
                 y2 = decode_recursive(index + 2);
                 
@@ -34,7 +34,7 @@ function re = decode_exp(chrom, cof, cons, G , g, sy, group)
                         end
                 end
                 
-            case {6,7,8,9} % 一元操作符
+            case {6,7,8,9} % 
                 y = decode_recursive(index + 1);
                 switch chrom(1, index)
                     case 6
@@ -98,7 +98,7 @@ function re = decode_exp(chrom, cof, cons, G , g, sy, group)
         else
 
         switch chrom(1, index)
-            case {2, 3, 4, 5} % 二元操作符
+            case {2, 3, 4, 5} % 
                 y1 = decode_main(index + 1);
                 y2 = decode_main(index + 2);
                 
@@ -117,7 +117,7 @@ function re = decode_exp(chrom, cof, cons, G , g, sy, group)
                         end
                 end
                 
-            case {6,7,8,9} % 一元操作符
+            case {6,7,8,9} % 
                 y = decode_main(index + 1);
                 switch chrom(1, index)
                     case 6

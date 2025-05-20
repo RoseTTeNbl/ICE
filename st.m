@@ -3,7 +3,7 @@ function y = stk(command, e)
 persistent d;
 switch (command)
     case {'init'}
-        d=[10];
+        d=[];
     case {'pop'}
         %出栈
         y = d(1);

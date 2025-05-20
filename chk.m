@@ -1,5 +1,4 @@
 function tst = chk(conv,chrom,g,cof,D,group)
-%计算过程表达式与常迭代过程表达式的距离比值
 r=size(chrom,1);
 
 cons=[1,0,1];

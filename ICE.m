@@ -13,7 +13,7 @@ P=[];
 CV1=[];
 
 NP=50;
-u=2;%最大对象数
+u=2;%
 l=h*(u-1)+1;
 l0=h0*(u-1)+1;
 l1=h1*(u-1)+1;
@@ -36,8 +36,8 @@ lim2=1e3;
 
 cofnum=size(cofb,2)+1; %include i as 1, size will be 13
 
-x=zeros(NP,D+D0);    % 初始种群:main:D=h+l//ADF:Adfnum*D0
-v=zeros(NP,D+D0);    % 变异种群
+x=zeros(NP,D+D0);    % :main:D=h+l//ADF:Adfnum*D0
+v=zeros(NP,D+D0);    % 
 fre=zeros(synum,1);
 afre=zeros(ADFnum+1,1);
 cfre=zeros(cofnum,1); 
@@ -53,7 +53,6 @@ for i=1:NP
     end
 end
 
-%   计算目标值和频率
 [A,ob,~,~,~]=fun(x,cons,cofb,A,cofb1,D,group);  %fre8x1,obNPx1
 trace=ones(G,1);
 timec=zeros(G,1);
@@ -90,7 +89,7 @@ for gen=1:G
             % PRE(k,:)=[x(m,1:cut),x(r1,cut+1:size(PRE,2))];
             % continue;  
             for j=1:size(PRE,2)
-                if rand(1) < F%差分步长
+                if rand(1) < F%
                     if x(m,j)==x(ind,j)
                     PRE(k,j)=x(m,j);
                     else
@@ -134,7 +133,7 @@ for gen=1:G
                 PRE(k,j)=x(m,j);
                 end
 
-                if rand(1) < F%差分步长
+                if rand(1) < F%
                     if x(r1,j)==x(r2,j)
                     PRE(k,j)=x(m,j);
                     else
@@ -178,7 +177,7 @@ for gen=1:G
                 PRE(k,j)=x(m,j);
                 end
 
-                if rand(1) < mut %%变异
+                if rand(1) < mut %%
                         if j<=h %1-h
                             PRE(k,j)=rtwhell(fre);
                             if PRE(k,j)==1
@@ -217,15 +216,13 @@ for gen=1:G
                 end
             end
             
-            [~,cpx(k,1)]=obj(PRE(k,:),cofb,g,dt,D,group);%%根据cpx复杂度进行初次筛选
+            [~,cpx(k,1)]=obj(PRE(k,:),cofb,g,dt,D,group);%%
         end
         [~,bst]=max(cpx);
         tem=PRE(bst,:);
         v(m,:)=tem;
        
     end
-    % 自然选择
-    % 计算新的适应度
 
     [A,obnew,~,~,~]=fun(v,cons,cofb,A,cofb1,D,group);
     v(1,:)=best;

@@ -1,4 +1,4 @@
-function [bv,bex] = testc(conv,cofb,group)%%距离的最小值与对应常表达式
+function [bv,bex] = testc(conv,cofb,group)%%
 
 MAXN=100;
 bv=1;

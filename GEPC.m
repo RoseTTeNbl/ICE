@@ -2,8 +2,8 @@ function [d,con] = GEPC(conv, cofb, group)
 
 G=30;
 NP=30;
-h=7;%头部符号位
-u=2;%最大对象数
+h=7;%
+u=2;%
 l=h*(u-1)+1;
 D=l+h;
 F=0.95;
@@ -11,8 +11,8 @@ F=0.95;
 synum=9;%1+4+4
 cofnum=size(cofb,2);%
 
-x1=zeros(NP,D);    % 初始种群
-v1=zeros(NP,D);    % 变异种群
+x1=zeros(NP,D);    % 
+v1=zeros(NP,D);    % 
 obs=ones(NP,1);
 fre=zeros(synum,1);
 cfre=zeros(cofnum,1);
@@ -27,13 +27,12 @@ for i=1:NP
         end
     end
 end
-%   计算目标值和频率
+%   
 fre=fr(x1,fre,1);
 cfre=fr(x1,cfre,2);
 obs=abs(fun1(x1,cofb,group)-conv);
 
 for gen=1:G
-    %   变异操作\
     for m=1:NP
         r1=randi([1,NP],1,1);
         while(r1==m)
@@ -63,8 +62,6 @@ for gen=1:G
         end
     end
        
-    % 自然选择
-    % 计算新的适应度
 
     obs1=abs(fun1(v1,cofb,group)-conv);
     

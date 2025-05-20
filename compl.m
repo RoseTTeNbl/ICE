@@ -28,7 +28,7 @@ function [] = decode_main(index,c)%% main part
             case {2, 3, 4, 5} % +-
                 decode_main(index + 1,c);
                 decode_main(index + 2,c);
-            case {6,7,8,9} % 一元操作符
+            case {6,7,8,9} % 
                 decode_main(index + 1,c);
         end
         end
@@ -51,7 +51,7 @@ function [] = decode_adf(index,c,k)%% main part
                 decode_main(index + 1,c);
                 decode_main(index + 2,c);
                 
-            case {6,7,8,9} % 一元操作符
+            case {6,7,8,9} % 
                 decode_main(index + 1,c);
         end
         end

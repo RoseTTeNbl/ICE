@@ -72,15 +72,9 @@ for algo_idx = 1:algo_count
         
         fprintf('\n\n正在运行算法 %s，组别 %d\n', algo_name, group);
         
-        % 运行T轮实验
         for t=1:T
-            % 使用函数句柄调用相应的算法
             if strcmp(algo_name, 'SLGEP_gep')
-                % 对于SLGEP的gep函数，参数不同
-                % 确保SLGEP算法能够正确处理输入数据
                 [A,P,CV,trace,prd,ctime]=gep(A,h1,cof,p,cofb,synum,G,group);
-                
-                % 截断P矩阵的大小，避免越界访问
                 if ~isempty(P)
                     P_size = size(P, 2);
                     if P_size > D+D1
@@ -88,7 +82,6 @@ for algo_idx = 1:algo_count
                     end
                 end
                 
-                % 将结果文件命名为ICE_Abl2，以保持一致性
                 algo_name_save = 'ICE_Abl2';
             else
                 algo_handle = str2func(algo_name);
@@ -128,9 +121,8 @@ for algo_idx = 1:algo_count
                             continue;
                         end
                     else
-                        % 对于SLGEP的gep函数，使用SLGEP下重命名的obj_abl函数
-                        % 需要调整相应逻辑
-                        SLGEP_cons = [1,0,1]; % SLGEP的cons格式
+ 
+                        SLGEP_cons = [1,0,1]; % 
                         [fs,ds]=obj_abl(P(i,1:D1),SLGEP_cons,cof,60,1,group);
                         fconv=fs(1,60);%LHS convergence
                         
@@ -149,7 +141,6 @@ for algo_idx = 1:algo_count
                             P(i,D1+1:D1+D1)=A(fconv);
                         end
                         
-                        % 使用SLGEP目录下重命名的chk函数
                         tst=chk_abl(CV(i,1),P(i,1:D1),Gt,cof,D1,group);
                     end
 
@@ -216,16 +207,9 @@ for algo_idx = 1:algo_count
         end
 
         if strcmp(algo_name, 'SLGEP_gep')
-            fprintf('算法 ICE_Abl2, 组别 %d: 实验 %d, 成功率 %.2f, 平均错误水平 %.2f, 标准差 %.2f\n', ...
-                group, epr, suc, sumcf, st);
             
-            % 保存结果到newresult目录
             result_file = sprintf('newresult/result_ICE_Abl2_g%d.mat', group);
         else
-            fprintf('算法 %s, 组别 %d: 实验 %d, 成功率 %.2f, 平均错误水平 %.2f, 标准差 %.2f\n', ...
-                algo_name, group, epr, suc, sumcf, st);
-                
-            % 保存结果到newresult目录
             result_file = sprintf('newresult/result_%s_g%d.mat', algo_name, group);
         end
         
